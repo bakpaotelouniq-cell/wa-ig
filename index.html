@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat WhatsApp</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RMBZP963BS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RMBZP963BS');
+  </script>
+</head>
+
+<body style="font-family:Arial;text-align:center;padding-top:50px">
+
+  <h2>Menghubungkan ke WhatsApp…</h2>
+  <p>Jika tidak terbuka otomatis, klik tombol di bawah</p>
+
+  <a id="waLink"
+     style="display:inline-block;
+            background:#25D366;
+            color:white;
+            padding:14px 22px;
+            text-decoration:none;
+            font-size:18px;
+            border-radius:6px;"
+     onclick="trackAndGo()">
+    Buka WhatsApp
+  </a>
+
+  <script>
+    const waNumber = "6281280147354";
+    const message = "Halo Pak Guntur [OT] saya mau tanya info rumah yang ada di tiktok official?";
+    const encoded = encodeURIComponent(message);
+    const waUrl = "https://wa.me/" + waNumber + "?text=" + encoded;
+
+    // set link
+    document.getElementById("waLink").href = waUrl;
+
+    function trackAndGo() {
+      // TRACK KLIK KE GOOGLE ANALYTICS
+      gtag('event', 'click_wa', {
+        event_category: 'WA',
+        event_label: 'github_pages'
+      });
+
+      // REDIRECT KE WHATSAPP
+      window.location.href = waUrl;
+    }
+
+    // auto redirect (biasanya tembus di HP)
+    setTimeout(() => {
+      window.location.href = waUrl;
+    }, 1000);
+  </script>
+
+</body>
+</html>
